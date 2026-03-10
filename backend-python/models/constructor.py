@@ -1,0 +1,11 @@
+from sqlalchemy import Column, Integer, String
+from database.db import Base
+
+
+class Constructor(Base):
+    __tablename__ = "constructors"
+
+    constructor_id = Column(Integer, primary_key=True, autoincrement=True)
+    constructor_ref = Column(String, unique=True)
+    name = Column(String)
+    nationality = Column(String)
