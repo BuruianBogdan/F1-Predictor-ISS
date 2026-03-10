@@ -13,3 +13,15 @@ class Driver(Base):
     surname = Column(String)
     dob = Column(Date)
     nationality = Column(String)
+
+    def to_dict(self):
+        return {
+            "driver_id": self.driver_id,
+            "driver_ref": self.driver_ref,
+            "number": self.number,
+            "code": self.code,
+            "forename": self.forename,
+            "surname": self.surname,
+            "dob": self.dob,
+            "nationality": self.nationality
+        }
