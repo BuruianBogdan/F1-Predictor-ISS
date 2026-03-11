@@ -1,0 +1,7 @@
+Link pentru baza de date:
+http://127.0.0.1:5000/drivers
+
+Pentru venv la backend:
+cd backend-python
+source .venv/bin/activate
+python app.py
