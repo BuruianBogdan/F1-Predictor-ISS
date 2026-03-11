@@ -49,4 +49,43 @@ class DriverRepository:
             session.delete(driver)
             session.commit()
 
+
+
+    def update_driver(self, driver_data):
+        session = SessionLocal()
+        driver = session.query(Driver).filter(Driver.driver_id == driver_id).first()
+        if not driver:
+            session.close()
+            return None
+
+        if "driver_ref" in driver_data:
+            driver.driver_ref = driver_data["driver_ref"]
+
+        if "number" in driver_data:
+            driver.number = driver_data["number"]
+
+        if "code" in driver_data:
+            driver.code = driver_data["code"]
+
+        if "dob" in driver_data:
+            driver.dob = driver_data["dob"]
+
+        if "forname" in driver_data:
+            driver.forename = driver_data["forname"]
+
+        if "surname" in driver_data:
+            driver.surname = driver_data["surname"]
+
+        if "nationality" in driver_data:
+            driver.nationality = driver_data["nationality"]
+
+        if "dob" in driver_data:
+            driver.dob = driver_data["dob"]
+
+        session.add(driver)
+        session.refresh(driver)
         session.close()
+        return driver
+
+
+
