@@ -9,3 +9,11 @@ class Constructor(Base):
     constructor_ref = Column(String, unique=True)
     name = Column(String)
     nationality = Column(String)
+
+    def to_dict(self):
+        return {
+            "constructor_id": self.constructor_id,
+            "constructor_ref": self.constructor_ref,
+            "name": self.name,
+            "nationality": self.nationality,
+        }
