@@ -21,8 +21,8 @@ class DriverService:
         return driver.to_dict()
 
     def update_driver(self, driver_id, driver_data):
-        self.repo.update_driver(driver_id, driver_data)
-        if driver_id:
+        driver = self.repo.update_driver(driver_id, driver_data)
+        if driver:
             return driver.to_dict()
         return None
 
