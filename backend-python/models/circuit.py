@@ -12,3 +12,14 @@ class Circuit(Base):
     country = Column(String)
     lat = Column(Float)
     lng = Column(Float)
+
+    def to_dict(self):
+        return {
+            "circuit_id": self.circuit_id,
+            "circuit_ref": self.circuit_ref,
+            "name": self.name,
+            "location": self.location,
+            "country": self.country,
+            "lat": self.lat,
+            "lng": self.lng
+        }
