@@ -1,3 +1,4 @@
+from datetime import datetime
 from database.db import SessionLocal
 from models.race_result import RaceResult
 
@@ -16,6 +17,12 @@ class ResultRepository:
         session.close()
         return result
 
+    def get_results_by_race(self, race_id):
+        session = SessionLocal()
+        results = session.query(RaceResult).filter(RaceResult.race_id == race_id).all()
+        session.close()
+        return results
+
     def add_result(self, result_data):
         session = SessionLocal()
 
@@ -23,10 +30,10 @@ class ResultRepository:
             race_id=result_data["race_id"],
             driver_id=result_data["driver_id"],
             constructor_id=result_data["constructor_id"],
-            grid=result_data["grid"],
-            position=result_data["position"],
-            points=result_data["points"],
-            status=result_data["status"]
+            grid=result_data.get("grid"),
+            position=result_data.get("position"),
+            points=result_data.get("points", 0.0),
+            status=result_data.get("status", "Finished")
         )
 
         session.add(result)
@@ -40,7 +47,6 @@ class ResultRepository:
         session = SessionLocal()
 
         result = session.query(RaceResult).filter(RaceResult.result_id == result_id).first()
-
         if not result:
             session.close()
             return None
@@ -70,9 +76,12 @@ class ResultRepository:
         session = SessionLocal()
 
         result = session.query(RaceResult).filter(RaceResult.result_id == result_id).first()
+        if not result:
+            session.close()
+            return False
 
-        if result:
-            session.delete(result)
-            session.commit()
-
+        session.delete(result)
+        session.commit()
         session.close()
+
+        return True

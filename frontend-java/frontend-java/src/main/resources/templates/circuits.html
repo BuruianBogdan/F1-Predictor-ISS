@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Circuits</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{/}">Dashboard</a>
+    <a th:href="@{/drivers}">Drivers</a>
+    <a th:href="@{/constructors}">Constructors</a>
+    <a th:href="@{/circuits}">Circuits</a>
+    <a th:href="@{/races}">Races</a>
+    <a th:href="@{/results}">Results</a>
+    <a th:href="@{/standings}">Standings</a>
+    <a th:href="@{/predictions}">Predictions</a>
+    <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+    <h1>Circuits</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Country</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="circuit : ${circuits}">
+            <td th:text="${circuit.circuit_id}"></td>
+            <td th:text="${circuit.name}"></td>
+            <td th:text="${circuit.location}"></td>
+            <td th:text="${circuit.country}"></td>
+            <td th:text="${circuit.lat}"></td>
+            <td th:text="${circuit.lng}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>F1 Predictor Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{/}">Dashboard</a>
+    <a th:href="@{/drivers}">Drivers</a>
+    <a th:href="@{/constructors}">Constructors</a>
+    <a th:href="@{/circuits}">Circuits</a>
+    <a th:href="@{/races}">Races</a>
+    <a th:href="@{/results}">Results</a>
+    <a th:href="@{/standings}">Standings</a>
+    <a th:href="@{/predictions}">Predictions</a>
+    <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+    <h1>F1 Predictor Dashboard</h1>
+    <p class="small-text">Spring Boot UI + Flask Prediction Engine</p>
+
+    <div class="cards">
+        <div class="card">
+            <h2>Drivers</h2>
+            <p th:text="${driverCount}">0</p>
+        </div>
+        <div class="card">
+            <h2>Constructors</h2>
+            <p th:text="${constructorCount}">0</p>
+        </div>
+        <div class="card">
+            <h2>Circuits</h2>
+            <p th:text="${circuitCount}">0</p>
+        </div>
+        <div class="card">
+            <h2>Races</h2>
+            <p th:text="${raceCount}">0</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

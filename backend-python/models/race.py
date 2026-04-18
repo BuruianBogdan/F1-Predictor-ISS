@@ -6,8 +6,8 @@ class Race(Base):
     __tablename__ = "races"
 
     race_id = Column(Integer, primary_key=True, autoincrement=True)
-    season_year = Column(Integer)
-    round = Column(Integer)
+    season_year = Column(Integer, nullable=False)
+    round = Column(Integer, nullable=False)
     circuit_id = Column(Integer, ForeignKey("circuits.circuit_id"))
     race_name = Column(String)
     date = Column(Date)

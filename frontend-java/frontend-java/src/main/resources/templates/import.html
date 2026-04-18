@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Import Historical Data</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{/}">Dashboard</a>
+    <a th:href="@{/drivers}">Drivers</a>
+    <a th:href="@{/constructors}">Constructors</a>
+    <a th:href="@{/circuits}">Circuits</a>
+    <a th:href="@{/races}">Races</a>
+    <a th:href="@{/results}">Results</a>
+    <a th:href="@{/standings}">Standings</a>
+    <a th:href="@{/predictions}">Predictions</a>
+    <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+    <h1>Import Historical Data</h1>
+
+    <form method="post" th:action="@{/import}">
+        <label for="startYear">Start Year</label>
+        <input type="number" id="startYear" name="startYear" value="2020" required>
+
+        <label for="endYear">End Year</label>
+        <input type="number" id="endYear" name="endYear" value="2024" required>
+
+        <button type="submit">Import Data</button>
+    </form>
+
+    <div class="section" th:if="${importResponse != null}">
+        <h2 th:text="${importResponse.message}"></h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Entity</th>
+                <th>Imported Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Drivers</td>
+                <td th:text="${importResponse.summary['drivers']}"></td>
+            </tr>
+            <tr>
+                <td>Constructors</td>
+                <td th:text="${importResponse.summary['constructors']}"></td>
+            </tr>
+            <tr>
+                <td>Circuits</td>
+                <td th:text="${importResponse.summary['circuits']}"></td>
+            </tr>
+            <tr>
+                <td>Races</td>
+                <td th:text="${importResponse.summary['races']}"></td>
+            </tr>
+            <tr>
+                <td>Results</td>
+                <td th:text="${importResponse.summary['results']}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

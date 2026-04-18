@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Races</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{/}">Dashboard</a>
+    <a th:href="@{/drivers}">Drivers</a>
+    <a th:href="@{/constructors}">Constructors</a>
+    <a th:href="@{/circuits}">Circuits</a>
+    <a th:href="@{/races}">Races</a>
+    <a th:href="@{/results}">Results</a>
+    <a th:href="@{/standings}">Standings</a>
+    <a th:href="@{/predictions}">Predictions</a>
+    <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+    <h1>Races</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Season</th>
+            <th>Round</th>
+            <th>Circuit ID</th>
+            <th>Race Name</th>
+            <th>Date</th>
+            <th>Completed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="race : ${races}">
+            <td th:text="${race.race_id}"></td>
+            <td th:text="${race.season_year}"></td>
+            <td th:text="${race.round}"></td>
+            <td th:text="${race.circuit_id}"></td>
+            <td th:text="${race.race_name}"></td>
+            <td th:text="${race.date}"></td>
+            <td th:text="${race.is_completed}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

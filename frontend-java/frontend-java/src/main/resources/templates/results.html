@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Results</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+  <a th:href="@{/}">Dashboard</a>
+  <a th:href="@{/drivers}">Drivers</a>
+  <a th:href="@{/constructors}">Constructors</a>
+  <a th:href="@{/circuits}">Circuits</a>
+  <a th:href="@{/races}">Races</a>
+  <a th:href="@{/results}">Results</a>
+  <a th:href="@{/standings}">Standings</a>
+  <a th:href="@{/predictions}">Predictions</a>
+  <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+  <h1>Race Results</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Race ID</th>
+      <th>Driver ID</th>
+      <th>Constructor ID</th>
+      <th>Grid</th>
+      <th>Position</th>
+      <th>Points</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${results}">
+      <td th:text="${result.result_id}"></td>
+      <td th:text="${result.race_id}"></td>
+      <td th:text="${result.driver_id}"></td>
+      <td th:text="${result.constructor_id}"></td>
+      <td th:text="${result.grid}"></td>
+      <td th:text="${result.position}"></td>
+      <td th:text="${result.points}"></td>
+      <td th:text="${result.status}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

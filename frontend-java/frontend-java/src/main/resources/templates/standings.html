@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Standings</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{/}">Dashboard</a>
+    <a th:href="@{/drivers}">Drivers</a>
+    <a th:href="@{/constructors}">Constructors</a>
+    <a th:href="@{/circuits}">Circuits</a>
+    <a th:href="@{/races}">Races</a>
+    <a th:href="@{/results}">Results</a>
+    <a th:href="@{/standings}">Standings</a>
+    <a th:href="@{/predictions}">Predictions</a>
+    <a th:href="@{/import}">Import</a>
+</div>
+
+<div class="container">
+    <h1>Standings</h1>
+
+    <div class="section">
+        <h2>Driver Standings</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>Driver</th>
+                <th>Code</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="driver : ${driverStandings}">
+                <td th:text="${driver.position}"></td>
+                <td th:text="${driver.driver_name}"></td>
+                <td th:text="${driver.code}"></td>
+                <td th:text="${driver.points}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Constructor Standings</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>Constructor</th>
+                <th>Nationality</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="constructor : ${constructorStandings}">
+                <td th:text="${constructor.position}"></td>
+                <td th:text="${constructor.constructor_name}"></td>
+                <td th:text="${constructor.nationality}"></td>
+                <td th:text="${constructor.points}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
